@@ -18,7 +18,7 @@ public:
         for(auto &c : password)
             c = symbols[std::rand() % symbols.size()];
         return password;
-}
+    }
 private:
     static constexpr std::array spec_symbols = {':', ';', '-', '_', '/', '?', '$', '#', '&'};
     static constexpr int count = 
@@ -26,19 +26,19 @@ private:
         (('z' - 'a') * 2) + 2 + 
         spec_symbols.size();
     static constexpr std::array<char, count> symbols = []() constexpr {
-    std::array<char, count> s{};
+        std::array<char, count> s{};
 
-    int j = 0;
-    for(; j < 10; j++)
-        s[j] = '0' + j;
+        int j = 0;
+        for(; j < 10; j++)
+            s[j] = '0' + j;
 
-    for(char c : {'a', 'A'})
-        for (int i = 0; i < 26; i++)
-            s[j++] = c + i;
+        for(char c : {'a', 'A'})
+            for(int i = 0; i < 26; i++)
+                s[j++] = c + i;
 
-    for(auto sc : spec_symbols)
-        s[j++] = sc;
+        for(auto sc : spec_symbols)
+            s[j++] = sc;
 
-    return s;
-}();
+        return s;
+    }();
 };
